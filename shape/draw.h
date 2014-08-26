@@ -11,6 +11,6 @@
 #import "AppDelegate.h"
 @interface draw : NSObject
 
-@property NSInteger x, y,width,height;
+@property int x, y,width,height;
 
 @end

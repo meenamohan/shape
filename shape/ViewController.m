@@ -9,9 +9,13 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-//{
-//    float x,y,width,height;
-//}
+{
+
+    NSMutableArray *arrayobj;
+    draw *drawobj;
+
+
+}
 @end
 
 @implementation ViewController
@@ -20,19 +24,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   draw *drawobj=[[draw alloc]init];
-    
-    drawobj.x=[text1.text integerValue];
-    drawobj.y=[text2.text intValue];
-    drawobj.width=[text3.text intValue];
-    drawobj.height=[text4.text intValue];
     
      self.text1.delegate = self;
     self.text2.delegate = self;
     self.text3.delegate = self;
     self.text4.delegate = self;
-    
-      }
+    arrayobj=[[NSMutableArray alloc]init];
+
+          }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
@@ -46,10 +45,44 @@
 
 - (IBAction)draw:(id)sender {
     
-    UIView *myview=[[UIView alloc]initWithFrame:CGRectMake(([text1.text intValue]), ([text2.text intValue]), ([text3.text intValue]), ([text4.text intValue]))];
-    //CGContextSetLineWidth(context, 2.0);
-    myview .backgroundColor = [UIColor blackColor];
-    [self.view addSubview:myview];
+    UIView *myview;
+
+        for(drawobj in arrayobj)
+       {
+           myview=[[UIView alloc]initWithFrame:CGRectMake((drawobj.x), (drawobj.y), (drawobj.width), (drawobj.height))];
+           
+           myview .backgroundColor = [UIColor redColor];
+
+           NSLog(@"print%@",drawobj);
+           [self.view addSubview:myview];
+
+       }
+    
+ 
+    
+}
+
+- (IBAction)save:(id)sender {
+    drawobj=[[draw alloc]init];
+
+    drawobj.x=[text1.text intValue];
+    drawobj.y=[text2.text intValue];
+    drawobj.width=[text3.text intValue];
+    drawobj.height=[text4.text intValue];
+    
+        [arrayobj addObject:drawobj];
+    NSLog(@"print%@",arrayobj);
+    
+
+//    for(id item in arrayobj)
+//    {
+//       // NSLog(@"Found an Item: %@",item);
+//        item =drawobj.x;
+//        item=drawobj.y;
+//        item=drawobj.width;
+//        item=drawobj.height;
+//    }
+    
 }
 
 

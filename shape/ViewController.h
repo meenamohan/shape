@@ -19,5 +19,6 @@
     
 
 - (IBAction)draw:(id)sender;
+- (IBAction)save:(id)sender;
 
 @end
